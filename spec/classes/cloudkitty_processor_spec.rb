@@ -8,7 +8,8 @@ describe 'cloudkitty::processor' do
       :collector      => 'gnocchi',
       :period         => '60',
       :wait_periods   => '1',
-      :window         => '3600',}
+      :window         => '3600',
+      :region_name    => 'Other',}
   end
 
   shared_examples_for 'cloudkitty-processor' do
@@ -23,6 +24,7 @@ describe 'cloudkitty::processor' do
       it { is_expected.to contain_cloudkitty_config('collect/wait_periods').with_value( params[:wait_periods] ) }
       it { is_expected.to contain_cloudkitty_config('collector_gnocchi/auth_type').with_value('password') }
       it { is_expected.to contain_cloudkitty_config('collector_gnocchi/auth_section').with_value('keystone_authtoken') }
+      it { is_expected.to contain_cloudkitty_config('collector_gnocchi/region_name').with_value('Other') }
 
       it 'installs cloudkitty-processor package' do
         is_expected.to contain_package('cloudkitty-processor').with(
