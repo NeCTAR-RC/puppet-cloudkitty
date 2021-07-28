@@ -60,6 +60,7 @@ class cloudkitty::processor (
   $auth_type         = 'password',
   $auth_section      = 'keystone_authtoken',
   $region_name       = $::os_service_default,
+  $max_workers       = $::os_service_default,
 ) {
 
   include cloudkitty::deps
@@ -105,6 +106,7 @@ class cloudkitty::processor (
     'collector_gnocchi/auth_type':    value => $auth_type;
     'collector_gnocchi/auth_section': value => $auth_section;
     'collector_gnocchi/region_name':  value => $region_name;
+    'orchestrator/max_workers':       value => $max_workers;
   }
 
 }

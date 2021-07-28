@@ -9,7 +9,8 @@ describe 'cloudkitty::processor' do
       :period         => '60',
       :wait_periods   => '1',
       :window         => '3600',
-      :region_name    => 'Other',}
+      :region_name    => 'Other',
+      :max_workers    => '6',}
   end
 
   shared_examples_for 'cloudkitty-processor' do
@@ -25,6 +26,7 @@ describe 'cloudkitty::processor' do
       it { is_expected.to contain_cloudkitty_config('collector_gnocchi/auth_type').with_value('password') }
       it { is_expected.to contain_cloudkitty_config('collector_gnocchi/auth_section').with_value('keystone_authtoken') }
       it { is_expected.to contain_cloudkitty_config('collector_gnocchi/region_name').with_value('Other') }
+      it { is_expected.to contain_cloudkitty_config('orchestrator/max_workers').with_value('6') }
 
       it 'installs cloudkitty-processor package' do
         is_expected.to contain_package('cloudkitty-processor').with(
