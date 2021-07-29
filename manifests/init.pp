@@ -331,7 +331,6 @@ will be removed in a future release.')
   include cloudkitty::params
   include cloudkitty::db
   include cloudkitty::deps
-  include cloudkitty::storage
 
   package { 'cloudkitty-common':
     ensure => $package_ensure,
